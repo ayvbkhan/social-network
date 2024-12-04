@@ -19,7 +19,7 @@ function App() {
             <Route index path="login" element={<LoginPage />} />
             <Route path="registration" element={<RegistrationPage />} />
           </Route>
-          <Route path="profile" element={<ProfilePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </div>
     </>
