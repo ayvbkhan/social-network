@@ -6,10 +6,10 @@ import { AuthButtons } from "@/components/AuthButtons/AuthButtons";
 
 export const RegistrationPage = () => {
     const buttons = [
-        { className: "reg__link google-link", href: "#", src: "./img/icons/google.svg", alt: "Google" },
-        { className: "reg__link google-plus-link", href: "#", src: "./img/icons/google-plus.svg", alt: "Google Plus" },
-        { className: "reg__link yandex-link", href: "#", src: "./img/icons/yandex.svg", alt: "Yandex" },
-        { className: "reg__link mail-ru-link", href: "#", src: "./img/icons/mail-ru.svg", alt: "Mail.ru" }
+        { className: "reg__link google-link", href: "#", src: "/img/icons/google.svg", alt: "Google" },
+        { className: "reg__link google-plus-link", href: "#", src: "/img/icons/google-plus.svg", alt: "Google Plus" },
+        { className: "reg__link yandex-link", href: "#", src: "/img/icons/yandex.svg", alt: "Yandex" },
+        { className: "reg__link mail-ru-link", href: "#", src: "/img/icons/mail-ru.svg", alt: "Mail.ru" }
     ];
     return (
         <div className="LoginPage">

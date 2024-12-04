@@ -80,7 +80,7 @@ export const Header = () => {
         </svg>
         <img
           className="_no-select"
-          src="./img/users/andrey-kashirskiy.jpeg"
+          src="/img/users/andrey-kashirskiy.jpeg"
           alt="Profile"
         />
         <svg
