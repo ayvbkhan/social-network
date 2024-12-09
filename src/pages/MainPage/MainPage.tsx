@@ -1,6 +1,39 @@
 import "./MainPage.scss";
 
-export const MainPage = () => {
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { Input } from "@/components/Input/Input";
+
+const schema = yup.object().shape({
+  whatsNew: yup
+    .string()
+    .notRequired()
+    .test(
+      "minLength",
+      "Минимум 3 символа",
+      (value) => !value || value.length >= 3
+    ),
+});
+
+interface FormValues {
+  whatsNew?: string;
+}
+
+export const MainPage: React.FC = () => {
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>({
+    resolver: yupResolver(schema) as any, 
+  });
+
+  const onSubmit = (data: FormValues) => {
+    console.log("Submitted data:", data);
+  };
+
   return (
     <div className="MainPage">
       <aside className="LeftSide">
@@ -236,12 +269,23 @@ export const MainPage = () => {
       <main className="Main">
         <div className="WhatsNew">
           <img src="./img/users/arina-volkova.jpeg" alt="User" />
-          <input
-            type="text"
-            name="whats-new"
-            id="whats-new"
-            placeholder="Что у вас нового?"
-          />
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault(); 
+                handleSubmit(onSubmit)(); 
+              }
+            }}
+          >
+            <Input
+              type="text"
+              {...register("whatsNew")}
+              id="whats-new"
+              placeholder="Что у вас нового?"
+            />
+            {errors.whatsNew && <p className="text-xs text-[#f00]">{errors.whatsNew.message}</p>}
+          </form>
           <div className="icons-wrapper">
             <svg
               className="icon icon-camera"
